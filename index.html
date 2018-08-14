@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #fact{
+            display:none;
+
+        }
+    </style>
+
+</head>
+<body class="bg-dark">
+
+    <div class="container-fluid ">
+        <div class="row">
+<div class="col-md-8 mx-auto">
+    <div class="card">
+        <form>
+                <div class="form-group">
+                        <h1> number fact
+                            </h1>
+                    <input   type="number" class=" form-control form-control-lg" id="num" >
+                    <div id="fact" class="card-body">
+                        <div class="card-title">
+                            
+                            <p id="ft"></p>
+                        </div>
+                    </div>
+                </div>
+            </form>
+    </div>
+</div>
+        </div>
+    </div>
+    <script>
+        let fact=document.querySelector('#fact');
+        let ft=document.querySelector('#ft');
+        let num=document.querySelector('#num');
+        num.addEventListener('input',function(){
+            getFactFetch()
+        });
+
+function getFactFetch()
+{
+    let num = document.getElementById('num').value;
+    fetch("http://numbersapi.com/"+num)
+    .then(Response=>Response.text())
+    .then(data => {
+        fact.style.display='block';
+        ft.innerText=data;
+
+    })
+   
+}
+
+        </script>
+
+</body>
+</html>
